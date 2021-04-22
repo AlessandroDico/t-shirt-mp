@@ -1,0 +1,19 @@
+@media screen and (max-width: 520px) {
+
+    .chose-t-shirt-container, .your-projects-container, .show-container, #single-edit-container {
+        min-height: 1000px;
+    }
+
+    input#t-shirt-title {
+        font-size: 15px;
+    }
+
+    span.span-name-project {
+        font-size: $mainFont;
+    }
+
+    .prefooter .prefooter-cta-img-container .prefooter-cta {
+        display: none;
+    }
+
+}

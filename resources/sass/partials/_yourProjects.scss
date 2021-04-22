@@ -1,0 +1,61 @@
+.your-projects-container {
+    min-height: 90vh;
+
+    .if-no-projects-container {
+
+        h1 {
+            margin: $mainSpace 0;
+            border: 1px solid black;
+            font-size: $mainFont * 1.5;
+        }
+
+    }
+    a#index-link-create {
+        display: block;
+        margin: $mainSpace * 2 auto;
+        border: 3px solid $fifthColor;
+        padding: $mainSpace * 2 $mainSpace;
+        font-size: $mainFont;
+        text-align: center;
+        color: black;
+        max-width: 600px;
+        transition: all 0.5s linear;
+
+        &:hover {
+            background-color: $fifthColor;
+            border: 3px solid $secondColor;
+        }
+    }
+
+    .project-cards {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        padding: $mainSpace * 3 0;
+
+
+        .single-card {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: $mainSpace;
+            border: 3px solid $secondColor;
+            margin: $mainSpace / 2;
+            cursor: pointer;
+
+            p {
+                font-size: $mainFont;
+            }
+
+            button.btn {
+                background-color: #f7665e;
+            }
+
+            a.btn {
+                background-color: $mainColor;
+            }
+        }
+    }
+}

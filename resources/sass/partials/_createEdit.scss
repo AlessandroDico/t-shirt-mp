@@ -1,0 +1,223 @@
+#main-container-create {
+    background-color: #28252570;
+}
+
+#single-edit-container {
+    padding: $mainSpace 0;
+    min-height: 90vh;
+
+    .write-container {
+        border: 1px solid black;
+        color: #f7665e;
+
+        p {
+            font-size: $mainFont;
+        }
+    }
+}
+
+.chose-t-shirt-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+    .chose-genre-img {
+        max-height: 420px;
+        max-width: 500px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        margin: $mainSpace;
+        border: 3px solid $fifthColor;
+        overflow: hidden;
+        padding: $mainSpace * 2 $mainSpace;
+
+        .img-container {
+            height: 340px;
+            width: 450px;
+            overflow: hidden;
+            cursor: pointer;
+
+            img {
+                width: 100%;
+            }
+        }
+
+        span {
+            display: block;
+            padding: $mainSpace;
+            height: 30px;
+            font-size: 25px;;
+            color: #fff;
+        }
+    }
+
+}
+
+#after-choice {
+    display: none;
+    padding: $mainSpace * 3 0;
+
+    h1 {
+        margin: $mainSpace 0;
+        border: 1px solid black;
+        font-size: $mainFont * 1.5;
+    }
+}
+
+.create-tshirt-container {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    #tshirt-container {
+        max-width: 450px;
+        max-height: 540px;
+        min-width: 420px;
+        min-height: 520px;
+        position: relative;
+        background-color: #fff;
+
+        #tshirt-image {
+            width: 100%;
+        }
+
+        .drawing-area {
+            position: absolute;
+            top: 60px;
+            left: 122px;
+            z-index: 10;
+            width: 200px;
+            height: 400px;
+
+            .canvas-container {
+                width: 200px;
+                height: 400px;
+                position: relative;
+                user-select: none;
+            }
+        }
+    }
+}
+
+
+#canvas {
+    position: absolute;
+    width: 200px;
+    height: 400px;
+    left: 0px;
+    top: 0px;
+    user-select: none;
+    cursor: default;
+
+}
+
+.lower-canvas.female {
+    height: 100px;
+}
+
+ul#default-prints-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    border: 2px solid $secondColor;
+
+    li.default-prints {
+        height: 60px;
+        width: 60px;
+        overflow: hidden;
+        border: 1px solid black;
+        position: relative;
+        z-index: 10;
+        margin: $mainSpace / 2;
+
+        img {
+            width: 100%;
+            position: relative;
+            z-index: -1;
+        }
+    }
+}
+
+ul#t-shirt-palette {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    max-width: 400px;
+    border: 2px solid $secondColor;
+
+
+    li.default-color-palette {
+        height: 50px;
+        width: 50px;
+        border: 1px solid black;
+        position: relative;
+        z-index: 10;
+        margin: $mainSpace / 2;
+        border-radius: 50%;
+    }
+    li.li-white {
+        background-color: #fff;
+    }
+    li.li-black {
+        background-color: #000;
+    }
+    li.li-red {
+        background-color: #f00;
+    }
+    li.li-brown {
+        background-color: #563232;
+    }
+    li.li-green {
+        background-color: #5b7344;
+    }
+    li.li-blue {
+        background-color: #2368ce;
+    }
+    li.li-purple {
+        background-color: #781f8e;
+    }
+    li.li-yellow {
+        background-color: #d5d831;
+    }
+}
+
+input#tshirt-custompicture {
+    padding: $mainSpace / 2 0;
+}
+
+input#t-shirt-title {
+    padding: $mainSpace / 2;
+    font-size: $mainFont;
+    width: 100%;
+}
+
+form button#form-button {
+    padding: $mainSpace $mainSpace * 2;
+    background-color: $fifthColor;
+    margin: $mainSpace 0;
+    width: 100%;
+    border: none;
+    font-size: $mainFont;
+}
+
+span.span-title {
+    font-size: $mainFont;
+}
+
+span.span-name-project {
+    display: block;
+    font-size: 22px;
+    background-color: $secondColor;
+}
+
+.div-default-prints-list, .div-t-shirt-palette, form {
+    padding: $mainSpace;
+}

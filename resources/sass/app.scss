@@ -1,1 +1,16 @@
 //
+// Bootstrap
+@import './node_modules/bootstrap/scss/bootstrap.scss';
+
+@import './partials/variables';
+
+@import './partials/general';
+@import './partials/header';
+@import './partials/footer';
+
+@import './partials/home';
+@import './partials/yourProjects';
+@import './partials/createEdit';
+@import './partials/singleTShirt';
+
+@import './partials/mediaquery';

@@ -1,0 +1,30 @@
+.show-container {
+    min-height: 90vh;
+
+    h1 {
+        margin: $mainSpace 0;
+        border: 1px solid black;
+        font-size: $mainFont * 2;
+    }
+    .show-single-card {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: $mainSpace * 4;
+        position: relative;
+
+        a.show-btn {
+            background-color: $fifthColor;
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: $mainSpace;
+            color: black;
+            transition: all 0.5s linear;
+
+            &:hover {
+                background-color: $secondColor;
+            }
+        }
+    }
+}
