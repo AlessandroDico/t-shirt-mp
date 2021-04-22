@@ -11216,7 +11216,7 @@ footer p {
   max-width: 450px;
   max-height: 540px;
   min-width: 420px;
-  min-height: 520px;
+  min-height: 525px;
   position: relative;
   background-color: #fff;
 }
@@ -11422,6 +11422,11 @@ form {
 
   .prefooter .prefooter-cta-img-container .prefooter-cta {
     display: none;
+  }
+
+  .create-tshirt-container #tshirt-container #tshirt-image {
+    width: 100%;
+    height: 100%;
   }
 }
 
