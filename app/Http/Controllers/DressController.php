@@ -162,12 +162,8 @@ class DressController extends Controller
      */
     public function edit(Dress $dress)
     {
-        // dd(base64_encode($dress->image));
-        // dd($dress);
-        // $img = imagecreatefromstring(base64_encode($dress->image));
         $data = [
             'dress' => $dress,
-            // 'encode' => base64_encode($dress->image),
         ];
         return view('guest.edit', $data);
     }
@@ -182,9 +178,15 @@ class DressController extends Controller
     public function update(Request $request, Dress $dress)
     {
         $data = $request->all();
-        // dd($data);
+        // dd($dress);
         // controllo che l'immagine sia in base64
         if (base64_decode($request->image, true)) {
+
+            /*cancello le cartelle precedenti*/
+            array_map('unlink', glob('./img/projects/' . $dress->slug . '/*.jpeg'));
+            rmdir('./img/projects/' . $dress->slug);
+            array_map('unlink', glob('./img/projects_watermarked/' . $dress->slug . '/*.jpeg'));
+            rmdir('./img/projects_watermarked/' . $dress->slug);
 
             $img = imagecreatefromstring(base64_decode($request->image));
             imagepng($img, 'myimage.png');
@@ -212,8 +214,64 @@ class DressController extends Controller
                         $currentSlug = Dress::where('slug', $slug)->first();
                     }
 
-                    $data['slug'] = $slug;
+                    $dress->slug = $slug;
                 }
+
+
+                /*creazione nuove cartelle*/
+                if (!file_exists('./img/projects/' . $dress->slug)) {
+                    mkdir('./img/projects/' . $dress->slug, 0777, true);
+                }
+
+                $link= 'data:image/png;base64,' . $request->image;
+                $destdir = './img/projects/' . $dress->slug;
+                $newImg = file_get_contents($link);
+                file_put_contents('./img/projects/' . $dress->slug . '/full.jpeg', $newImg);
+                file_put_contents('./img/projects/' . $dress->slug . '/mid.jpeg', $newImg);
+                file_put_contents('./img/projects/' . $dress->slug . '/thumbnail.jpeg', $newImg);
+
+
+                // se non esiste creo una dopia della cartella per le immagini con il watermark
+                if (!file_exists('./img/projects_watermarked/' . $dress->slug)) {
+                    mkdir('./img/projects_watermarked/' . $dress->slug, 0777, true);
+                }
+                $source = './img/projects/' . $dress->slug;
+                $destination = './img/projects_watermarked/' . $dress->slug;
+
+                $watermark = imagecreatefrompng('./img/watermark/watermark.png');
+
+                $margin_right = 40;
+                $margin_bottom = 10;
+
+                $sx = imagesx($watermark);
+                $sy = imagesy($watermark);
+                $images = array_diff(scandir($source), array('..','.'));
+
+                foreach ($images as $image) {
+                    $img = imagecreatefrompng($source . '/' . $image);
+                    imagecopy($img, $watermark, imagesx($img) -$sx - $margin_right, imagesy($img) - $sy - $margin_bottom, 0, 0, $sx, $sy);
+                    $i = imagejpeg($img, $destination . '/' . $image, 100);
+                }
+
+
+// in questo punto dopo che ho le cartelle con le immagini ridimensiono le immagini mid e thumbnail
+                if (!function_exists('resize_image')) {
+                    function resize_image($file, $w, $h) {
+                       list($width, $height) = getimagesize($file);
+                       $src = imagecreatefromjpeg($file);
+                       $dst = imagecreatetruecolor($w, $h);
+                       imagecopyresampled($dst, $src, 0, 0, 0, 0, $w, $h, $width, $height);
+                       return $dst;
+                    }
+                    //
+
+                    $imgMid = resize_image('./img/projects_watermarked/'. $dress->slug . '/mid.jpeg', 250, 303);
+                    imagejpeg($imgMid, './img/projects_watermarked/'. $dress->slug . '/mid.jpeg');
+
+                    $imgThumbnail = resize_image('./img/projects_watermarked/'. $dress->slug . '/thumbnail.jpeg', 150, 181);
+                    imagejpeg($imgThumbnail, './img/projects_watermarked/'. $dress->slug . '/thumbnail.jpeg');
+                };
+
                 //se passo la validazione aggiorno nel DB nome e immagine
                 $dress->update($data);
 
