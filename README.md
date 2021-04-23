@@ -17,25 +17,33 @@ Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Comp
 ## Clone the repository
 
 install dependencies
+
     composer install
+and
+
     npm install
 
-## Create file .env by copying file .env.example
-
 Generate the application key
+
+    Create file .env by copying file .env.example
+
     php artisan key:generate
 
 ## If you can't see the key in your file .env (APP_KEY) run php artisan key:generate --show then copy the result into the .env manually
 
 Build CSS and JS assets
+
     npm run dev
 
 Populate the server
+
     php artisan migrate
 
 Launch the server
+
     php -S localhost:8000 -t public
 or
+
     php artisan serve
 
 ## The project is now up and running. Access it at http://localhost:8000
