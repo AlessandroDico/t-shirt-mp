@@ -11,7 +11,10 @@
 
 ## Installation
 
+
 Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Composer and Node.js.
+
+## Clone the repository
 
 install dependencies
     composer install
