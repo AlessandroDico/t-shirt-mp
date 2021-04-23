@@ -7,8 +7,37 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
 </p>
 
-## About Laravel
+# Getting started
 
+## Installation
+
+Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Composer and Node.js.
+
+install dependencies
+    composer install
+    npm install
+
+## Create file .env by copying file .env.example
+
+Generate the application key
+    php artisan key:generate
+
+## If you can't see the key in your file .env (APP_KEY) run php artisan key:generate --show then copy the result into the .env manually
+
+Build CSS and JS assets
+    npm run dev
+
+Populate the server
+    php artisan migrate
+
+Launch the server
+    php -S localhost:8000 -t public
+or
+    php artisan serve
+
+## The project is now up and running. Access it at http://localhost:8000
+
+## About Laravel
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).
