@@ -14,24 +14,29 @@
 
 Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Composer and Node.js.
 
-## Clone the repository
+-Clone the repository
 
-install dependencies
+Then
+
+-Install dependencies
 
     composer install
 and
 
     npm install
 
-Generate the application key
+-Create file .env by copying file .env.example then add the database data and generate the application key
 
-    Create file .env by copying file .env.example
+        php artisan key:generate
 
-    php artisan key:generate
+    If you can't see the key in your file .env (APP_KEY) run
 
-## If you can't see the key in your file .env (APP_KEY) run php artisan key:generate --show then copy the result into the .env manually
+        php artisan key:generate --show
 
-Build CSS and JS assets
+    then copy the result into the .env manually
+
+
+-Build CSS and JS assets
 
     npm run dev
 
