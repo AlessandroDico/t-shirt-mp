@@ -12,7 +12,7 @@
 ## Installation
 
 
-Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Composer and Node.js.
+### Assuming you've already installed on your machine: PHP (>= 7.0.0), Laravel, Composer and Node.js.
 
 -Clone the repository
 
@@ -25,7 +25,9 @@ and
 
     npm install
 
--Create file .env by copying file .env.example then add the database data and generate the application key
+-Create file .env by copying file .env.example and add the database data
+
+-Then generate the application key
 
         php artisan key:generate
 
